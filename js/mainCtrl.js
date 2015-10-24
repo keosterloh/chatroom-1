@@ -5,17 +5,21 @@ app.controller('mainCtrl', function($scope, parseService){
 
     $scope.getParseData = function(){
         parseService.getData().then(function(data){
-            $scope.messages = data.data.results;
+            console.log(data.data);
+            $scope.messages = data.data;
+              $scope.messages.reverse();
         })
     };
 
     $scope.message = '';
     $scope.postData = function(){
         if(!$scope.message) return;
-        parseService.postData($scope.message)
+        parseService.postData($scope.message);
         $scope.message = '';
 
+
     };
+
 
    $scope.getParseData();
    setInterval(function(){
